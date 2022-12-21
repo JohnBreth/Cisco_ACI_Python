@@ -22,6 +22,11 @@ bd1 = BridgeDomain('BD_Linux', tenant)
 # Add Bridge Domain to VRF
 bd.add_context(context)
 
+# Create subnet and attach it to BD
+subnet = Subnet('Security', bd)
+subnet.set_addr('192.168.1.1/24')
+bd.add_subnet(subnet)
+
 # Create EPGs and add it to Bridge Domain
 epg = EPG('epg_CyberInsight-PY', app)
 epg1 = EPG('epg_CyberInsight1-P', app)
