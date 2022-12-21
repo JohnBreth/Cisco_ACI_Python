@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from acitoolkit.acitoolkit import *
 """
 Create a tenant with a single EPG and assign it statically to 2 interfaces.
@@ -8,7 +10,7 @@ within the ACI fabric.
 tenant = Tenant('CyberInsight-PY')
 
 # Create VRF
-context = Context('VRF_CyberInsight-PY)', tenant)
+context = Context('VRF_CyberInsight-PY', tenant)
 
 # Get the APIC login credentials
 description = 'acitoolkit tutorial application'

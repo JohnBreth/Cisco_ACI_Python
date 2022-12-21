@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from acitoolkit.acitoolkit import *
 """
 Create a tenant with a single EPG and assign it statically to 2 interfaces.
