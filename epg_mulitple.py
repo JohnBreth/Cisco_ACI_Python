@@ -12,7 +12,7 @@ tenant = Tenant('CyberInsight-PY')
 # Create VRF
 context = Context('VRF_CyberInsight-PY', tenant)
 
-# Create Application Profie
+# Create Application Profile
 app = AppProfile('AP_CyberInsight-PY', tenant)
 
 # Create Bridge Domain
