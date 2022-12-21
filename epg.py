@@ -19,8 +19,12 @@ app = AppProfile('AP_CyberInsight-PY', tenant)
 bd = BridgeDomain('BD_Security', tenant)
 bd2 = BridgeDomain('BD_Linux', tenant)
 
-#Add Bridge Domain to VRF
+# Add Bridge Domain to VRF
 bd.add_context(context)
+
+# Create EPG and add it to Bridge Domain
+epg = EPG('epg_CyberInsight-PY', app)
+epg.add_bd(bd)
 
 # Get the APIC login credentials
 description = 'acitoolkit tutorial application'
