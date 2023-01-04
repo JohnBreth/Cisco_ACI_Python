@@ -39,7 +39,7 @@ epg1.set_intra_epg_isolation(True)
 
 # Define a contract and attach 2 entries to it
 contract = Contract('Syslog', tenant)
-entry1 = FilterEntry('TCPSyslog',
+TCPSyslog = FilterEntry('TCPSyslog',
                          applyToFrag='no',
                          arpOpc='unspecified',
                          dFromPort='512',
@@ -50,7 +50,7 @@ entry1 = FilterEntry('TCPSyslog',
                          sToPort='65535',
                          tcpRules='unspecified',
                          parent=contract)
-entry2 = FilterEntry('UDPSyslog',
+UDPSyslog = FilterEntry('UDPSyslog',
                          applyToFrag='no',
                          arpOpc='unspecified',
                          dFromPort='512',
@@ -66,9 +66,9 @@ entry2 = FilterEntry('UDPSyslog',
 if1 = Interface('eth', '1', '101', '1', '20')
 if2 = Interface('eth', '1', '101', '1', '21')
 
-# Provide the contract from 1 EPG and consume from the other(Linux server(consumer) sending syslog traffic to security servers(provider))
-epg.provide(contract)
-epg1.consume(contract)
+# Provide the contract from 1 EPG and consume from the other(Linux server(provider) sending syslog traffic to security servers(consumer))
+epg.consume(contract)
+epg1.provide(contract)
 
 # Create port channel
 pc1 = PortChannel('pc1')
