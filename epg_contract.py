@@ -37,9 +37,9 @@ epg1.add_bd(bd1)
 epg.set_intra_epg_isolation(False)
 epg1.set_intra_epg_isolation(True)
 
-# Define a contract
+# Define a contract and attach 2 entries to it
 contract = Contract('Syslog', tenant)
-    entry1 = FilterEntry('entry1',
+entry1 = FilterEntry('TCPSyslog',
                          applyToFrag='no',
                          arpOpc='unspecified',
                          dFromPort='512',
@@ -50,6 +50,18 @@ contract = Contract('Syslog', tenant)
                          sToPort='65535',
                          tcpRules='unspecified',
                          parent=contract)
+entry2 = FilterEntry('UDPSyslog',
+                         applyToFrag='no',
+                         arpOpc='unspecified',
+                         dFromPort='512',
+                         dToPort='512',
+                         etherT='ip',
+                         prot='UDP',
+                         sFromPort='1',
+                         sToPort='65535',
+                         tcpRules='unspecified',
+                         parent=contract)
+
 # Declare 2 physical interfaces
 if1 = Interface('eth', '1', '101', '1', '20')
 if2 = Interface('eth', '1', '101', '1', '21')
